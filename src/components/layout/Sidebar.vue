@@ -45,7 +45,9 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { jobs } from '@/data/mock.js'
 
 const route = useRoute()
 
@@ -76,9 +78,6 @@ const IconSystem = {
     <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
   </svg>`
 }
-
-import { computed } from 'vue'
-import { jobs } from '@/data/mock.js'
 
 const activeJobCount = computed(() => jobs.filter(j => j.status === 'processing').length)
 
