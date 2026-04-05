@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__linear__linear_getProjects",
+      "mcp__linear__linear_getTeams",
+      "mcp__linear__linear_getProjectIssues",
+      "Bash(npm install:*)",
+      "Bash(npx vite:*)",
+      "Bash(npm run:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "linear"
+  ]
+}
