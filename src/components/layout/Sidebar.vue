@@ -77,10 +77,16 @@ const IconSystem = {
   </svg>`
 }
 
-const navItems = [
-  { path: '/',       label: 'Dashboard',  icon: IconDashboard },
+import { computed } from 'vue'
+import { jobs } from '@/data/mock.js'
+
+const activeJobCount = computed(() => jobs.filter(j => j.status === 'processing').length)
+
+const navItems = computed(() => [
+  { path: '/',       label: 'Dashboard',    icon: IconDashboard },
   { path: '/users',  label: 'Kullanıcılar', icon: IconUsers },
-  { path: '/jobs',   label: 'Job Monitörü', icon: IconJobs, badge: '2', badgeType: 'normal' },
+  { path: '/jobs',   label: 'Job Monitörü', icon: IconJobs,
+    badge: activeJobCount.value > 0 ? String(activeJobCount.value) : null, badgeType: 'normal' },
   { path: '/system', label: 'Sistem Sağlığı', icon: IconSystem }
-]
+])
 </script>
