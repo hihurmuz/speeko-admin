@@ -7,8 +7,10 @@ export const login = (password) =>
   api.post('/admin/login', { password })
 
 // --- Dashboard ---
-export const getStats        = () => api.get('/admin/stats')
-export const getDailyRevenue = () => api.get('/admin/stats/daily')
+export const getStats           = () => api.get('/admin/stats')
+export const getDailyRevenue    = () => api.get('/admin/stats/daily')
+export const getUsageBreakdown  = () => api.get('/admin/stats/usage')
+export const getRecentTransactions = () => api.get('/admin/stats/transactions')
 
 // --- Kullanıcılar ---
 export const getUsers        = ()          => api.get('/admin/users')

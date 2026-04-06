@@ -38,7 +38,12 @@
           <div class="text-sm text-gray-200 truncate">Admin</div>
           <div class="text-xs text-gray-500">admin.speeko.io</div>
         </div>
-        <div class="w-2 h-2 bg-green-500 rounded-full flex-shrink-0"></div>
+        <button @click="logout" title="Çıkış Yap"
+          class="text-gray-600 hover:text-red-400 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+          </svg>
+        </button>
       </div>
     </div>
   </aside>
@@ -46,7 +51,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { jobs } from '@/data/mock.js'
 
 const route = useRoute()
@@ -77,6 +82,13 @@ const IconSystem = {
   template: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
   </svg>`
+}
+
+const router = useRouter()
+
+function logout() {
+  localStorage.removeItem('admin_token')
+  router.push('/login')
 }
 
 const activeJobCount = computed(() => jobs.filter(j => j.status === 'processing').length)

@@ -22,6 +22,8 @@ import { useRoute } from 'vue-router'
 import Sidebar from '@/components/layout/Sidebar.vue'
 import TopBar  from '@/components/layout/TopBar.vue'
 
-const route     = useRoute()
-const isLoggedIn = computed(() => route.name !== 'login')
+const route      = useRoute()
+const isLoggedIn = computed(() =>
+  !!localStorage.getItem('admin_token') && route.name !== 'login'
+)
 </script>
